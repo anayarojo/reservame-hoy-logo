@@ -1,0 +1,57 @@
+$background:    #fff;
+$primary:       #00aeef;
+$secundary:     #24242c;
+$size:            40px; 
+
+// Colors
+/*
+$blue:      #3490dc;
+$indigo:    #6574cd;
+$purple:    #9561e2;
+$pink:      #f66D9b;
+$red:       #e3342f;
+$orange:    #f6993f;
+$yellow:    #ffed4a;
+$green:     #38c172;
+$teal:      #4dc0b5;
+$cyan:      #6cb2eb;
+*/
+
+// Corporate colors
+/*
+$primary-1:      #00aeef;
+$primary-2:      #0094c8;
+$primary-3:      #0076a0;
+$primary-4:      #005978;
+$gray-1:         #59666f;
+$dark:           #24242c;
+$light:          #f1f1f1;
+*/
+
+
+body
+{
+    margin: 0;
+    padding: 0;
+    background-color: $background;
+
+    .reservame-hoy-logo
+    {
+        width: $size;
+        height: $size;
+        display: block;
+        position: relative;
+        border-radius: 50%;
+        background-color: $primary;
+
+        &::before
+        {
+            content: "";
+            width: calc(#{$size}*.8);
+            height: calc(#{$size}*.8);
+            display: block;
+            border-radius: 50%;
+            background-color: $background;
+        }
+    }
+}
