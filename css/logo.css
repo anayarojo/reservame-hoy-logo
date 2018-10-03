@@ -26,8 +26,8 @@ body {
 }
 
 body .reservame-hoy-logo {
-  width: 40px;
-  height: 40px;
+  width: 160px;
+  height: 160px;
   display: block;
   position: relative;
   border-radius: 50%;
@@ -36,9 +36,29 @@ body .reservame-hoy-logo {
 
 body .reservame-hoy-logo::before {
   content: "";
-  width: calc(40px*.8);
-  height: calc(40px*.8);
+  width: 128px;
+  height: 128px;
+  left: 16px;
+  top: 16px;
   display: block;
+  position: absolute;
   border-radius: 50%;
   background-color: #fff;
+}
+
+body .reservame-hoy-logo .checkmark {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 32px;
+  height: 64px;
+  left: 48px;
+  top: 32px;
+  /*
+            top: 40px;
+            left: 56px;
+            */
+  border: solid #000;
+  border-width: 0 16px 16px 0;
+  transform: rotate(45deg);
 }
