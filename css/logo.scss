@@ -1,85 +1,170 @@
-$background:    #fff;
-$primary:       #00aeef;
-$secundary:     #24242c;
-$logo_size:       160; 
-$line_size:       $logo_size / 10;
+// VARIABLES
 
-// Colors
-/*
-$blue:      #3490dc;
-$indigo:    #6574cd;
-$purple:    #9561e2;
-$pink:      #f66D9b;
-$red:       #e3342f;
-$orange:    #f6993f;
-$yellow:    #ffed4a;
-$green:     #38c172;
-$teal:      #4dc0b5;
-$cyan:      #6cb2eb;
-*/
+$background_color:    #fff;
+$primary_color:       #00aeef;
+$secundary_color:     #24242c;
+$logo_size:             500px;
+$line_size:             $logo_size / 10;
 
-// Corporate colors
-/*
-$primary-1:      #00aeef;
-$primary-2:      #0094c8;
-$primary-3:      #0076a0;
-$primary-4:      #005978;
-$gray-1:         #59666f;
-$dark:           #24242c;
-$light:          #f1f1f1;
-*/
+// MIXINS
+
+@mixin circle($size)
+{
+    content: "";
+    width: $size;
+    height: $size;
+    border-radius: 50%;
+    position: relative;
+}
+
+@mixin absoluteCenter($size)
+{
+    position: absolute;
+    top: calc(50% - #{$size * 0.5});
+    left: calc(50% - #{$size * 0.5});
+}
+
+@mixin circleFragment($size, $color, $rotation)
+{
+    @include circle($size);
+    position: absolute;
+    clip-path: polygon(50% 0, 100% 0, 100% 100% 50% 100%);
+    transform: rotate($rotation);
+    &::after
+    {
+        @include circle($size);
+        position: absolute;
+        background: linear-gradient(to right, transparent 50%, $color 50%);
+        transform: rotate(120deg);
+    }
+}
 
 
 body
 {
-    margin: 0;
-    padding: 0;
-    background-color: $background;
+    display: flex;
+    min-height: 100vh;
+    background-color: $background_color;
 
     .reservame-hoy-logo
     {
-        width: #{$logo_size}px;
-        height: #{$logo_size}px;
-        display: block;
-        position: relative;
-        border-radius: 50%;
-        background-color: $primary;
+        display: flex;
+        margin: auto;
 
-        &::before
+        @include circle($logo_size);
+        background-color: darken($primary_color, 5%);
+        //transform: rotate(-30deg);
+
+        &::after
         {
-            content: "";
-            width: #{$logo_size * 0.8}px;
-            height: #{$logo_size * 0.8}px;
-            left: #{$line_size}px;
-            top: #{$line_size}px;
-            display: block;
-            position: absolute;
-            border-radius: 50%;
-            background-color: $background;
+            @include circle($logo_size * 0.8);
+            @include absoluteCenter($logo_size * 0.8);
+            background-color: $background_color;
         }
 
-        .checkmark
+        //border: solid $line_size $secundary_color;
+        //background-color: $primary_color;
+
+        .__border
         {
-            content: "";
-            display: block;
+            @include circle($logo_size);
             position: absolute;
+            clip-path: polygon(50% 0, 100% 0, 100% 100%, 50% 100%);
 
+            &::before{
+                @include circle($logo_size);
+                position: absolute;
+                background: linear-gradient(transparent 50%, $primary_color 50%);
+                transform: rotate(-90deg);
+            }
 
-            width: #{$line_size * 2}px;
-            height: #{$line_size * 4}px;
+            .__circle_light
+            {
+                @include circle($line_size);
+                top: 0;
+                left: calc(50% - #{$line_size / 2});
+                background: red;
+                position: absolute;
+                display: block;
+            }
 
-            left: #{(($logo_size / 2) - ($line_size * 2 / 2) - $line_size)}px;
-            top: #{(($logo_size / 2) - ($line_size * 4 / 2) - $line_size)}px;
-
-            /*
-            top: 40px;
-            left: 56px;
-            */
-        
-            border: solid #000;
-            border-width: 0 #{$line_size}px #{$line_size}px 0;
-        
-            transform: rotate(45deg);
+            .__circle_dark
+            {
+                @include circle($line_size);
+                top: calc(100% - #{$line_size});
+                left: calc(50% - #{$line_size / 2});
+                background: darken($primary_color, 5%);
+                position: absolute;
+                display: block;
+            }
         }
+
+        /*
+        &::after
+        {
+            @include circle($logo_size * 0.8);
+            @include absoluteCenter($logo_size * 0.8);
+            background-color: $background_color;
+        }
+        */
     }
+
+    /*
+    [class^="__circle_"]
+    {
+        @include circle($line_size);
+        position: absolute;
+        background-color: darken($primary_color, 5%);
+    }
+    */
+
+    // .reservame-hoy-logo
+    // {
+    //     display: flex;
+    //     margin: auto;
+
+    //     width: #{$logo_size}px;
+    //     height: #{$logo_size}px;
+    //     display: block;
+    //     //position: relative;
+    //     border-radius: 50%;
+    //     background-color: $primary_color;
+
+    //     &::before
+    //     {
+    //         content: "";
+    //         width: #{$logo_size * 0.8}px;
+    //         height: #{$logo_size * 0.8}px;
+    //         left: #{$line_size}px;
+    //         top: #{$line_size}px;
+    //         display: block;
+    //         position: absolute;
+    //         border-radius: 50%;
+    //         background-color: $background_color;
+    //     }
+
+    //     .checkmark
+    //     {
+    //         content: "";
+    //         display: block;
+    //         position: absolute;
+
+
+    //         width: #{$line_size * 2}px;
+    //         height: #{$line_size * 4}px;
+
+    //         left: #{(($logo_size / 2) - ($line_size * 2 / 2) - $line_size)}px;
+    //         top: #{(($logo_size / 2) - ($line_size * 4 / 2) - $line_size)}px;
+
+    //         /*
+    //         top: 40px;
+    //         left: 56px;
+    //         */
+        
+    //         border: solid #000;
+    //         border-width: 0 #{$line_size}px #{$line_size}px 0;
+        
+    //         transform: rotate(45deg);
+    //     }
+    // }
 }
