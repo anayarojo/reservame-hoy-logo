@@ -8,8 +8,8 @@ body .reservame-hoy-logo {
   display: flex;
   margin: auto;
   content: "";
-  width: 50px;
-  height: 50px;
+  width: 500px;
+  height: 500px;
   border-radius: 50%;
   position: relative;
   background-color: #4e5961;
@@ -18,8 +18,8 @@ body .reservame-hoy-logo {
 
 body .reservame-hoy-logo::before {
   content: "";
-  width: 50px;
-  height: 50px;
+  width: 500px;
+  height: 500px;
   border-radius: 50%;
   position: relative;
   background-color: #59666f;
@@ -28,20 +28,20 @@ body .reservame-hoy-logo::before {
 
 body .reservame-hoy-logo::after {
   content: "";
-  width: 37.5px;
-  height: 37.5px;
+  width: 375px;
+  height: 375px;
   border-radius: 50%;
   position: relative;
   position: absolute;
-  top: calc(50% - 18.75px);
-  left: calc(50% - 18.75px);
+  top: calc(50% - 187.5px);
+  left: calc(50% - 187.5px);
   background-color: #fff;
 }
 
 body .reservame-hoy-logo [class^="__circle_"] {
   content: "";
-  width: 6.25px;
-  height: 6.25px;
+  width: 62.5px;
+  height: 62.5px;
   border-radius: 50%;
   position: relative;
   position: absolute;
@@ -50,21 +50,21 @@ body .reservame-hoy-logo [class^="__circle_"] {
 body .reservame-hoy-logo .__border .__circle_dark {
   background-color: #4e5961;
   top: 0;
-  left: calc(50% - 3.125px);
+  left: calc(50% - 31.25px);
 }
 
 body .reservame-hoy-logo .__border .__circle_light {
   background-color: #59666f;
-  top: calc(100% - 6.25px);
-  left: calc(50% - 3.125px);
+  top: calc(100% - 62.5px);
+  left: calc(50% - 31.25px);
 }
 
 body .reservame-hoy-logo .__checkmark {
   position: absolute;
-  width: 12.5px;
-  height: 37.5px;
-  top: calc(50% - 37.5px);
-  left: calc(50% - 12.5px);
+  width: 125px;
+  height: 375px;
+  top: calc(50% - 375px);
+  left: calc(50% - 125px);
   transform-origin: 100% 100%;
   transform: rotate(0deg);
   animation: rotating 1s ease-in-out infinite;
@@ -73,40 +73,40 @@ body .reservame-hoy-logo .__checkmark {
 
 body .reservame-hoy-logo .__checkmark::before {
   content: "";
-  width: 12.5px;
-  height: 6.25px;
+  width: 125px;
+  height: 62.5px;
   background-color: #009bd6;
   position: absolute;
-  top: calc(100% - 3.125px);
+  top: calc(100% - 31.25px);
   left: 0;
 }
 
 body .reservame-hoy-logo .__checkmark::after {
   content: "";
-  width: 6.25px;
-  height: 37.5px;
+  width: 62.5px;
+  height: 375px;
   background-color: #00aeef;
   position: absolute;
   top: 0;
-  left: calc(100% - 3.125px);
+  left: calc(100% - 31.25px);
 }
 
 body .reservame-hoy-logo .__checkmark .__circle_1 {
   background-color: #009bd6;
-  top: calc(100% - 3.125px);
-  left: -3.125px;
+  top: calc(100% - 31.25px);
+  left: -31.25px;
 }
 
 body .reservame-hoy-logo .__checkmark .__circle_2 {
   background-color: #00aeef;
-  top: calc(100% - 3.125px);
-  left: calc(100% - 3.125px);
+  top: calc(100% - 31.25px);
+  left: calc(100% - 31.25px);
 }
 
 body .reservame-hoy-logo .__checkmark .__circle_3 {
   background-color: #00aeef;
-  top: -3.125px;
-  left: calc(100% - 3.125px);
+  top: -31.25px;
+  left: calc(100% - 31.25px);
 }
 
 @keyframes inverse-rotating {
