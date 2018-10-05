@@ -4,8 +4,8 @@ $background_color:    #fff;
 $primary_color:       #00aeef;
 $secundary_color:     #24242c;
 $default_color:       #59666f;
-$logo_size:             500px;
-$line_size:             $logo_size / 10;
+$logo_size:             50px;
+$line_size:             $logo_size * 0.125;
 
 // MIXINS
 
@@ -53,119 +53,111 @@ body
         margin: auto;
 
         @include circle($logo_size);
-        background-color: darken($primary_color, 5%);
-        //transform: rotate(-30deg);
+        background-color: darken($default_color, 5%);
+        //transform: rotate(60deg);
+        //animation: rotating 2s linear infinite;
+
+        &::before
+        {
+            @include circle($logo_size);
+            background-color: $default_color;
+            clip-path: polygon(50% 0, 100% 0, 100% 100%, 50% 100%);
+        }
 
         &::after
         {
-            @include circle($logo_size * 0.8);
-            @include absoluteCenter($logo_size * 0.8);
+            @include circle($logo_size * 0.75);
+            @include absoluteCenter($logo_size * 0.75);
             background-color: $background_color;
         }
 
-        //border: solid $line_size $secundary_color;
-        //background-color: $primary_color;
+        [class^="__circle_"]
+        {
+            @include circle($line_size);
+            position: absolute;
+        }
 
         .__border
         {
-            @include circle($logo_size);
-            position: absolute;
-            clip-path: polygon(50% 0, 100% 0, 100% 100%, 50% 100%);
-
-            &::before{
-                @include circle($logo_size);
-                position: absolute;
-                background: linear-gradient(transparent 50%, $primary_color 50%);
-                transform: rotate(-90deg);
-            }
-
-            .__circle_light
-            {
-                @include circle($line_size);
-                top: 0;
-                left: calc(50% - #{$line_size / 2});
-                background: red;
-                position: absolute;
-                display: block;
-            }
-
             .__circle_dark
             {
-                @include circle($line_size);
+                background-color: darken($default_color, 5%);
+                top: 0;
+                left: calc(50% - #{$line_size/2});
+    
+            }
+    
+            .__circle_light
+            {
+                background-color: $default_color;
                 top: calc(100% - #{$line_size});
-                left: calc(50% - #{$line_size / 2});
-                background: darken($primary_color, 5%);
-                position: absolute;
-                display: block;
+                left: calc(50% - #{$line_size/2});
             }
         }
 
-        /*
-        &::after
+        .__checkmark
         {
-            @include circle($logo_size * 0.8);
-            @include absoluteCenter($logo_size * 0.8);
-            background-color: $background_color;
+            position: absolute;
+            width: #{$line_size * 2};
+            height: #{$line_size * 6};
+            top: calc(50% - #{$line_size * 11 / 2});
+            left: calc(50% - #{$line_size * 3 / 2});
+            transform: rotate(30deg);
+            transform-origin: 100% 100%;
+            /*animation: rotating 2s linear infinite;*/
+            z-index: 1;
+
+            &::before
+            {
+                content: "";
+                width: #{$line_size * 2};
+                height: #{$line_size};
+                background-color: darken($primary_color, 5%);
+                position: absolute;
+                top: calc(100% - #{$line_size / 2});
+                left: 0;
+            }
+
+            &::after
+            {
+                content: "";
+                width: #{$line_size};
+                height: #{$line_size * 6};
+                background-color: $primary_color;
+                position: absolute;
+                top: 0;
+                left: calc(100% - #{$line_size / 2});;
+            }
+
+            .__circle_1
+            {
+                background-color: darken($primary_color, 5%);
+                top: calc(100% - #{$line_size / 2});
+                left: -#{$line_size / 2};
+            }
+
+            .__circle_2
+            {
+                background-color: $primary_color;
+                top: calc(100% - #{$line_size / 2});
+                left: calc(100% - #{$line_size / 2});
+            }
+
+            .__circle_3
+            {
+                background-color: $primary_color;
+                top: -#{$line_size / 2};
+                left: calc(100% - #{$line_size / 2});
+            }
         }
-        */
     }
-
-    /*
-    [class^="__circle_"]
-    {
-        @include circle($line_size);
-        position: absolute;
-        background-color: darken($primary_color, 5%);
-    }
-    */
-
-    // .reservame-hoy-logo
-    // {
-    //     display: flex;
-    //     margin: auto;
-
-    //     width: #{$logo_size}px;
-    //     height: #{$logo_size}px;
-    //     display: block;
-    //     //position: relative;
-    //     border-radius: 50%;
-    //     background-color: $primary_color;
-
-    //     &::before
-    //     {
-    //         content: "";
-    //         width: #{$logo_size * 0.8}px;
-    //         height: #{$logo_size * 0.8}px;
-    //         left: #{$line_size}px;
-    //         top: #{$line_size}px;
-    //         display: block;
-    //         position: absolute;
-    //         border-radius: 50%;
-    //         background-color: $background_color;
-    //     }
-
-    //     .checkmark
-    //     {
-    //         content: "";
-    //         display: block;
-    //         position: absolute;
-
-
-    //         width: #{$line_size * 2}px;
-    //         height: #{$line_size * 4}px;
-
-    //         left: #{(($logo_size / 2) - ($line_size * 2 / 2) - $line_size)}px;
-    //         top: #{(($logo_size / 2) - ($line_size * 4 / 2) - $line_size)}px;
-
-    //         /*
-    //         top: 40px;
-    //         left: 56px;
-    //         */
-        
-    //         border: solid #000;
-    //         border-width: 0 #{$line_size}px #{$line_size}px 0;
-        
-    //         transform: rotate(45deg);
-    //     }
-    // }
 }
+
+@keyframes rotating {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
