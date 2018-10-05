@@ -54,8 +54,8 @@ body
 
         @include circle($logo_size);
         background-color: darken($default_color, 5%);
-        //transform: rotate(60deg);
-        //animation: rotating 2s linear infinite;
+        transform: rotate(60deg);
+        //animation: inverse-rotating 2s linear infinite;
 
         &::before
         {
@@ -100,11 +100,11 @@ body
             position: absolute;
             width: #{$line_size * 2};
             height: #{$line_size * 6};
-            top: calc(50% - #{$line_size * 11 / 2});
-            left: calc(50% - #{$line_size * 3 / 2});
-            transform: rotate(30deg);
+            top: calc(50% - #{$line_size * 12 / 2});
+            left: calc(50% - #{$line_size * 4 / 2});
             transform-origin: 100% 100%;
-            /*animation: rotating 2s linear infinite;*/
+            transform: rotate(0deg);
+            animation: rotating 1s ease-in-out infinite;
             z-index: 1;
 
             &::before
@@ -152,6 +152,15 @@ body
         }
     }
 }
+
+@keyframes inverse-rotating {
+    from {
+      transform: rotate(360deg);
+    }
+    to {
+      transform: rotate(0deg);
+    }
+  }
 
 @keyframes rotating {
     from {

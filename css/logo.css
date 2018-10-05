@@ -13,6 +13,7 @@ body .reservame-hoy-logo {
   border-radius: 50%;
   position: relative;
   background-color: #4e5961;
+  transform: rotate(60deg);
 }
 
 body .reservame-hoy-logo::before {
@@ -62,11 +63,11 @@ body .reservame-hoy-logo .__checkmark {
   position: absolute;
   width: 12.5px;
   height: 37.5px;
-  top: calc(50% - 34.375px);
-  left: calc(50% - 9.375px);
-  transform: rotate(30deg);
+  top: calc(50% - 37.5px);
+  left: calc(50% - 12.5px);
   transform-origin: 100% 100%;
-  /*animation: rotating 2s linear infinite;*/
+  transform: rotate(0deg);
+  animation: rotating 1s ease-in-out infinite;
   z-index: 1;
 }
 
@@ -106,6 +107,15 @@ body .reservame-hoy-logo .__checkmark .__circle_3 {
   background-color: #00aeef;
   top: -3.125px;
   left: calc(100% - 3.125px);
+}
+
+@keyframes inverse-rotating {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
 }
 
 @keyframes rotating {
