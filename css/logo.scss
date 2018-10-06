@@ -4,9 +4,9 @@ $background_color:    #fff;
 $primary_color:       #00aeef;
 $secundary_color:     #24242c;
 $default_color:       #59666f;
-$logo_size:             36px;
-$line_size:             $logo_size * 0.125;
-$check_size:            $logo_size * 0.25;
+$logo_size:             150px;
+$line_size:             $logo_size * 0.150;
+$check_size:            $logo_size * 0.200;
 
 // MIXINS
 
@@ -53,12 +53,7 @@ body
         display: flex;
         margin: auto;
 
-        [class^="__circle_"]
-        {
-            @include circle($line_size);
-            position: absolute;
-        }
-
+    
         .__border
         {
 
@@ -87,11 +82,18 @@ body
                 z-index: 2;
             }
 
+            [class^="__circle_"]
+            {
+                @include circle($line_size);
+                position: absolute;
+            }
+
             .__circle_dark
             {
                 background-color: darken($default_color, 5%);
                 top: 0;
                 left: calc(50% - #{$line_size/2});
+                z-index: 1;
     
             }
     
@@ -100,70 +102,78 @@ body
                 background-color: $default_color;
                 top: calc(100% - #{$line_size});
                 left: calc(50% - #{$line_size/2});
+                z-index: 1;
             }
         }
 
         .__checkmark
         {
             position: absolute;
-            width: #{$line_size * 2};
-            height: #{$line_size * 6};
-            top: calc(50% - #{$line_size * 11 / 2});
-            left: calc(50% - #{$line_size * 3 / 2});
+            width: #{$check_size * 1.5};
+            height: #{$check_size * 3.5};
+            top: calc(50% - #{$check_size * 5.5 / 2});
+            left: calc(50% - #{$check_size * 2.5 / 2});
             transform: rotate(30deg);
             transform-origin: 100% 100%;
-            /*animation: rotating 2s linear infinite;*/
+            //animation: rotating 2s linear infinite;
             z-index: 3;
 
             &::before
             {
                 content: "";
-                width: #{$line_size * 2};
-                height: #{$line_size};
+                width: #{$check_size * 1.5};
+                height: #{$check_size};
                 background-color: darken($primary_color, 5%);
                 position: absolute;
-                top: calc(100% - #{$line_size / 2});
+                top: calc(100% - #{$check_size / 2});
                 left: 0;
             }
 
             &::after
             {
                 content: "";
-                width: #{$line_size};
-                height: #{$line_size * 6};
+                width: #{$check_size};
+                height: #{$check_size * 3.5};
                 background-color: $primary_color;
                 position: absolute;
                 top: 0;
-                left: calc(100% - #{$line_size / 2});;
+                left: calc(100% - #{$check_size / 2});;
+            }
+
+            [class^="__circle_"]
+            {
+                @include circle($check_size);
+                position: absolute;
             }
 
             .__circle_1
             {
                 background-color: darken($primary_color, 5%);
-                top: calc(100% - #{$line_size / 2});
-                left: -#{$line_size / 2};
+                top: calc(100% - #{$check_size / 2});
+                left: -#{$check_size / 2};
             }
 
             .__circle_2
             {
                 background-color: $primary_color;
-                top: calc(100% - #{$line_size / 2});
-                left: calc(100% - #{$line_size / 2});
+                top: calc(100% - #{$check_size / 2});
+                left: calc(100% - #{$check_size / 2});
             }
 
             .__circle_3
             {
                 background-color: $primary_color;
-                top: -#{$line_size / 2};
-                left: calc(100% - #{$line_size / 2});
+                top: -#{$check_size / 2};
+                left: calc(100% - #{$check_size / 2});
             }
         }
 
         .__text
         {
-            margin-left: #{$line_size};
+            margin-left: #{$line_size / 2};
             line-height: $logo_size;
-            color: darken($default_color, 10%);
+            color: darken($default_color, 5%);
+            //color: $default_color;
             font-family: 'Roboto', sans-serif;
             font-size: #{$logo_size * 0.8};
             font-weight: 700;
