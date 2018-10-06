@@ -4,8 +4,9 @@ $background_color:    #fff;
 $primary_color:       #00aeef;
 $secundary_color:     #24242c;
 $default_color:       #59666f;
-$logo_size:             50px;
+$logo_size:             36px;
 $line_size:             $logo_size * 0.125;
+$check_size:            $logo_size * 0.25;
 
 // MIXINS
 
@@ -52,25 +53,6 @@ body
         display: flex;
         margin: auto;
 
-        @include circle($logo_size);
-        background-color: darken($default_color, 5%);
-        //transform: rotate(60deg);
-        //animation: rotating 2s linear infinite;
-
-        &::before
-        {
-            @include circle($logo_size);
-            background-color: $default_color;
-            clip-path: polygon(50% 0, 100% 0, 100% 100%, 50% 100%);
-        }
-
-        &::after
-        {
-            @include circle($logo_size * 0.75);
-            @include absoluteCenter($logo_size * 0.75);
-            background-color: $background_color;
-        }
-
         [class^="__circle_"]
         {
             @include circle($line_size);
@@ -79,6 +61,32 @@ body
 
         .__border
         {
+
+            @include circle($logo_size);
+            display: inline-block;
+            position: relative;
+            background-color: darken($default_color, 5%);
+            z-index: 0;
+            //transform: rotate(60deg);
+            //animation: rotating 2s linear infinite;
+
+            &::before
+            {
+                @include circle($logo_size);
+                position: absolute;
+                background-color: $default_color;
+                clip-path: polygon(50% 0, 100% 0, 100% 100%, 50% 100%);
+                z-index: 1;
+            }
+
+            &::after
+            {
+                @include circle($logo_size * 0.75);
+                @include absoluteCenter($logo_size * 0.75);
+                background-color: $background_color;
+                z-index: 2;
+            }
+
             .__circle_dark
             {
                 background-color: darken($default_color, 5%);
@@ -105,7 +113,7 @@ body
             transform: rotate(30deg);
             transform-origin: 100% 100%;
             /*animation: rotating 2s linear infinite;*/
-            z-index: 1;
+            z-index: 3;
 
             &::before
             {
@@ -150,6 +158,25 @@ body
                 left: calc(100% - #{$line_size / 2});
             }
         }
+
+        .__text
+        {
+            margin-left: #{$line_size};
+            line-height: $logo_size;
+            color: darken($default_color, 10%);
+            font-family: 'Roboto', sans-serif;
+            font-size: #{$logo_size * 0.8};
+            font-weight: 700;
+
+            .__accent
+            {
+                font-weight: 900;
+                color: $primary_color;
+                line-height: $logo_size;
+            }
+        }
+
+        
     }
 }
 
