@@ -53,7 +53,6 @@ body
         display: flex;
         margin: auto;
 
-    
         .__border
         {
 
@@ -189,6 +188,15 @@ body
         
     }
 }
+
+@keyframes inverse-rotating {
+    from {
+      transform: rotate(360deg);
+    }
+    to {
+      transform: rotate(0deg);
+    }
+  }
 
 @keyframes rotating {
     from {

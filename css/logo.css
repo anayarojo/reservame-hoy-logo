@@ -142,6 +142,15 @@ body .reservame-hoy-logo .__text .__accent {
   line-height: 150px;
 }
 
+@keyframes inverse-rotating {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
 @keyframes rotating {
   from {
     transform: rotate(0deg);
